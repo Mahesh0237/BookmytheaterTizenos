@@ -390,7 +390,7 @@
 //       {/* Main Content */}
 //       <div className="relative z-10 flex flex-1 flex-row items-stretch">
 //         {/* Left Section */}
-        
+
 //         <div className="flex-1 p-16 flex flex-col justify-center">
 //           <h1 className="text-white text-4xl font-bold mb-3 text-center">
 //             Login to your account
@@ -655,9 +655,10 @@ const LoginPage = () => {
   }, [activeSection]);
 
   useEffect(() => {
-    if (isLoading) return; // Disable listener during login process
+    if (isLoading) return;
 
     const handleKeyDown = (e) => {
+      if (keyboardVisible) return;
       e.preventDefault();
 
       if (activeSection === 'MODAL') {
@@ -680,22 +681,7 @@ const LoginPage = () => {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeSection, focusedIndex, isLoading]);
-
-  // Effect to focus the element when index changes
-  useEffect(() => {
-    if (activeSection === 'FORM') {
-      formRefs.current[focusedIndex]?.focus();
-    } else if (activeSection === 'MODAL') {
-      otpOkButtonRef.current?.focus();
-    }
-  }, [focusedIndex, activeSection]);
-
-
-  const handleInputChange = (name, value) => {
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    if (errorMessage) setErrorMessage(null);
-  };
+  }, [activeSection, focusedIndex, isLoading, keyboardVisible]);
 
   const handleOpenKeyboard = (field) => {
     setActiveInputField(field);
@@ -734,8 +720,6 @@ const LoginPage = () => {
       }));
     }
   };
-
-  console.log("use User Details", useUserdetails);
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -819,7 +803,6 @@ const LoginPage = () => {
     }
   };
 
-
   const handleLogin = useCallback(async () => {
     setIsLoading(true);
     setErrorMessage(null);
@@ -863,10 +846,7 @@ const LoginPage = () => {
       }
 
       localStorage.setItem("access_token", responseData.access_token);
-      localStorage.setItem(
-        "user_info",
-        JSON.stringify(responseData.user_details)
-      );
+      localStorage.setItem("user_info", JSON.stringify(responseData.user_details));
 
       updateAuthDetails(responseData.user_details, responseData.access_token);
       // Use a timeout to ensure state updates and cleanup effects have time to run
@@ -922,25 +902,6 @@ const LoginPage = () => {
 
       {/* Header */}
       <BookMyTheatreHeader />
-
-      {/* Modals */}
-      {/* {isOtpModalVisible && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-50">
-          <div className="bg-[#1a1a1a] p-10 rounded-xl w-[550px] text-center border border-gray-700 shadow-xl">
-            <p className="text-2xl font-semibold mb-8 leading-snug">
-              Please complete the signup process in the mobile app or browser
-              before logging in here.
-            </p>
-            <button
-              ref={otpOkButtonRef}
-              onClick={() => { setIsOtpModalVisible(false); setActiveSection('FORM'); }}
-              className="bg-red-700 hover:bg-red-600 py-3 px-10 rounded-md text-lg font-semibold outline-none focus:ring-4 focus:ring-white"
-            >
-              OK
-            </button>
-          </div>
-        </div>
-      )} */}
 
       {/* OTP Modal */}
       <Modal
@@ -1011,7 +972,7 @@ const LoginPage = () => {
       {/* Main Content */}
       <div className="relative z-10 flex flex-1 flex-row items-stretch">
         {/* Left Section */}
-        
+
         <div className="flex-1 p-16 flex flex-col justify-center">
           <h1 className="text-white text-4xl font-bold mb-3 text-center">
             Login to your account
@@ -1050,56 +1011,6 @@ const LoginPage = () => {
             Keep the QR code clearly visible. This page will automatically update when the connection is established
           </p>
         </div>
-
-
-        {/* Right Section */}
-        {/* <div className="flex-1 flex flex-col justify-center px-20 py-12 bg-black/40 backdrop-blur-sm">
-          <h2 className="text-3xl font-semibold mb-4">Sign in with Email</h2>
-          <p className="text-gray-300 text-lg mb-8">
-            Enter your registered email and password below to continue.
-          </p>
-
-          <div className="mb-8">
-            <label className="block text-sm text-gray-400 mb-2">
-              Email Address
-            </label>
-            <input
-              ref={el => formRefs.current[0] = el}
-              type="email"
-              value={formData.email}
-              onChange={(e) => handleInputChange("email", e.target.value)}
-              placeholder="Enter your email"
-              className={`w-full bg-transparent border-b-2 text-white text-lg py-3 outline-none transition-all duration-200 ${focusedIndex === 0 ? 'border-red-600' : 'border-gray-500'}`}
-            />
-          </div>
-
-          <div className="mb-8">
-            <label className="block text-sm text-gray-400 mb-2">Password</label>
-            <input
-              ref={el => formRefs.current[1] = el}
-              type="password"
-              value={formData.password}
-              onChange={(e) => handleInputChange("password", e.target.value)}
-              placeholder="Enter your password"
-              className={`w-full bg-transparent border-b-2 text-white text-lg py-3 outline-none transition-all duration-200 ${focusedIndex === 1 ? 'border-red-600' : 'border-gray-500'}`}
-            />
-          </div>
-
-          {errorMessage && (
-            <p className="text-red-500 text-lg mb-6">{errorMessage.message}</p>
-          )}
-
-          <motion.button
-            onClick={handleLogin}
-            ref={el => formRefs.current[3] = el}
-            disabled={isLoading}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            className={`w-full bg-red-700 hover:bg-red-600 py-4 rounded-lg text-xl font-bold tracking-wide shadow-xl transition outline-none ${focusedIndex === 3 ? 'ring-4 ring-white' : ''}`}
-          >
-            {isLoading ? "Logging in..." : "Login"}
-          </motion.button>
-        </div> */}
 
         <div className="flex-1 p-16 flex flex-col justify-center border-l border-gray-700/50">
           <h2 className="text-white text-2xl font-semibold mb-4">
@@ -1176,18 +1087,6 @@ const LoginPage = () => {
             </p>
           )}
 
-          {/* Forgot Password Link */}
-          {/* <button
-              onClick={() => setIsForgotPasswordModalVisible(true)}
-              onFocus={() => setFocusedElement('forgotPassword')}
-              onBlur={() => setFocusedElement(null)}
-              className={`font-semibold mb-6 ml-auto transition-colors ${
-                focusedElement === 'forgotPassword' ? 'text-[#c02628]' : 'text-gray-400'
-              }`}
-            >
-              Forgot password?
-            </button> */}
-
           {/* Login Button */}
           <button
             onClick={handleLogin}
@@ -1217,4 +1116,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
