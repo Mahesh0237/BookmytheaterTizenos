@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Config from "../../config.jsx";
+import Config from '../../config';
 
 const Authapi = axios.create({
   baseURL: `${Config.api_url}/auth/`,

@@ -7,8 +7,8 @@ import Movieapi from '../components/api/Movieapi';
 import Moviestatapi from '../components/api/Moviestatapi';
 import { useUserdetails } from '../components/zustand/useUserdetails';
 import Errorpanelcardview from '../shared/Errorpanelcardview';
-import IndividialMovieCard from '../components/Individualmoviecard';
-import IndividialCardSkeleton from '../components/Individualcardskeleton';
+import IndividialMovieCard from '../shared/Individualmoviecard';
+import IndividialCardSkeleton from '../shared/Individualcardskeleton'
 import Sidebar from '../components/Sidebar';
 import Sectionheading from '../shared/Sectionheading';
 
@@ -158,8 +158,6 @@ export default function SingleMoviePage() {
     }
   }, [user_id, movie_uid]);
 
-  console.log('Movie Details:', movie_uid);
-
   const playMovie = useCallback(async () => {
     if (!user_id || !movie_uid) {
       alert('User information is missing');
@@ -194,10 +192,6 @@ export default function SingleMoviePage() {
   }, [user_id, movie_uid, user_uid, languageId, navigate, addWatchHistory]);
 
   const playTrailer = useCallback(async () => {
-    if (!user_id || !movie_uid) {
-      alert('User information is missing');
-      return;
-    }
     try {
       setIsPlayActionLoading(true);
       setPlayTrailerError('');
@@ -373,7 +367,7 @@ export default function SingleMoviePage() {
   // -------------------- Render --------------------
   if (isMainLoading || !movieDetails) {
     return (
-      <div className="w-full h-screen bg-gradient-to-b from-black to-[#5B0203] flex">
+      <div className="w-full h-screen bg-linear-to-b from-black to-[#5B0203] flex">
         <Sidebar />
         <div className="flex-1 overflow-auto">
           <div className="w-full h-[500px] bg-gray-800 animate-pulse" />
@@ -391,7 +385,7 @@ export default function SingleMoviePage() {
 
   if (mainError && !movieDetails) {
     return (
-      <div className="w-full h-screen bg-gradient-to-b from-black to-[#5B0203] flex">
+      <div className="w-full h-screen bg-linear-to-b from-black to-[#5B0203] flex">
         <Sidebar />
         <div className="flex-1 flex items-center justify-center p-6">
           <Errorpanelcardview errorMessages={mainError} retry={retryMainData} />
@@ -401,7 +395,7 @@ export default function SingleMoviePage() {
   }
 
   return (
-    <div className="w-full h-screen bg-gradient-to-b from-black to-[#5B0203] flex text-white">
+    <div className="w-full h-screen bg-linear-to-b from-black to-[#5B0203] flex text-white">
       <Sidebar isActive={activeSection === 'SIDEBAR'} isLogged={isLogged} forceRedirect="/login" />
 
       <main className="flex-1 overflow-auto">
@@ -410,7 +404,7 @@ export default function SingleMoviePage() {
           className="w-full h-[650px] bg-center bg-cover relative"
           style={{ backgroundImage: `url('${movieDetails?.main_banner || movieDetails?.main_thumbnail || 'https://via.placeholder.com/1280x720'}')` }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80" />
+          <div className="absolute inset-0 bg-linear-to-b from-transparent to-black/80" />
           <div className="absolute bottom-8 left-8 right-8">
             <h1 className="text-5xl font-bold mb-4">{movieDetails?.title}</h1>
             <div className="flex gap-4 items-center">

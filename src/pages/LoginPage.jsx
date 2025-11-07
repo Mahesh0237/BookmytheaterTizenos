@@ -583,7 +583,7 @@ import login_logo from "../../public/login_logo.png";
 import Authapi from "../components/api/Authapi";
 import { useUserdetails } from "../components/zustand/useUserdetails";
 import { useNavigate } from "react-router-dom";
-import VirtualKeyboard from "../components/VirtualKeyboard";
+import VirtualKeyboard from "../shared/VirtualKeyboard";
 
 const BookMyTheatreHeader = () => (
   <div className="absolute top-4 right-8 z-10">

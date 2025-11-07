@@ -279,7 +279,7 @@ const SearchMoviePage = () => {
     const currentKeyboard = getCurrentKeyboard();
 
     return (
-        <div className="flex flex-row gap-5 h-screen text-white bg-gradient-to-b from-black to-[#5B0203]">
+        <div className="flex flex-row gap-5 h-screen text-white bg-linear-to-b from-black to-[#5B0203]">
             <Sidebar isActive={activeSection === 'SIDEBAR'} />
 
             <div className="w-full">

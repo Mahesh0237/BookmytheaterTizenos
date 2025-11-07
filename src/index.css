@@ -1,9 +1,4 @@
 @import "tailwindcss";
-/* .tv-focused {
-  outline: 3px solid #3b82f6 !important;
-  border-radius: 6px;
-} */
-
 
 /* Add to your global CSS */
 html, body, #root {

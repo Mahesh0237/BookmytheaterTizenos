@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import laughterImg from '../../public/laughter.png';
 import Sidebar from '../components/Sidebar';
-import GradientCard from '../components/GradientCard';
+import GradientCard from '../shared/GradientCard'
 import angerImg from '../../public/anger.png';
 import courageImg from '../../public/courage.png';
 import disgustImg from '../../public/disgust.png';
@@ -15,7 +15,7 @@ import Sectionheading from '../shared/Sectionheading'
 import Movieapi from '../components/api/Movieapi';
 import skeletonAnimation from '../../public/assets/skeleton.json';
 import Errorpanelcardview from '../shared/Errorpanelcardview';
-import Skeletongradientcard from '../components/Skeletongradientcard';
+import Skeletongradientcard from '../shared/Skeletongradientcard';
 import Lottie from 'lottie-react';
 import MovieThumbnail from '../shared/MovieThumbnail';
 
@@ -349,7 +349,7 @@ const CategoriesPage = () => {
   if (error) {
     return (
       <div
-        className="flex-1 justify-center items-center bg-gradient-to-b from-black to-[#5B0203]"
+        className="flex-1 justify-center items-center bg-linear-to-b from-black to-[#5B0203]"
       >
         <p className="text-red-500 text-2xl">Error: {error}</p>
       </div>
@@ -357,7 +357,7 @@ const CategoriesPage = () => {
   }
 
   return (
-    <div className="flex flex-row h-screen bg-gradient-to-b from-black to-[#5B0203]">
+    <div className="flex flex-row h-screen bg-linear-to-b from-black to-[#5B0203]">
       <Sidebar isActive={activeSection === 'SIDEBAR'} />
       {/* === 2. Content Area (Scrollable) === */}
       {/* <div className="flex"> */}
@@ -372,7 +372,7 @@ const CategoriesPage = () => {
 
           {/* === Horizontal Category Icons Row (Top Row) === */}
           <div
-            className="flex flex-row !overflow-x-auto mb-3 ml-0 pl-4 no-scrollbar"
+            className="flex flex-row overflow-x-auto! mb-3 ml-0 pl-4 no-scrollbar"
           >
             {isLoading ? (
               <>
@@ -405,7 +405,7 @@ const CategoriesPage = () => {
                 {[1, 2, 3, 4, 5, 6, 7].map(item => (
                   <div
                     key={item}
-                    className="w-[200px] h-[300px] bg-[#1a1a1a] overflow-hidden rounded-md flex-shrink-0"
+                    className="w-[200px] h-[300px] bg-[#1a1a1a] overflow-hidden rounded-md shrink-0"
                   >
                     <Lottie animationData={skeletonAnimation} loop={true} />
                   </div>
@@ -423,7 +423,7 @@ const CategoriesPage = () => {
                     {[1, 2, 3, 4, 5, 6].map(item => (
                       <div
                         key={item}
-                        className="w-[200px] h-[300px] bg-[#1a1a1a] overflow-hidden rounded-md flex-shrink-0"
+                        className="w-[200px] h-[300px] bg-[#1a1a1a] overflow-hidden rounded-md shrink-0"
                       >
                         <Lottie animationData={skeletonAnimation} loop={true} />
                       </div>

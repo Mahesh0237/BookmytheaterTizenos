@@ -72,7 +72,7 @@ const TrendingMoviesLanding = ({ isActive, onNavigate }) => {
   );
  
   return (
-    <div className="relative py-10 bg-gradient-to-b from-[#0a0a0a] to-[#702728]">
+    <div className="relative py-10 bg-linear-to-b from-[#0a0a0a] to-[#702728]">
       <div className="px-6 mb-6">
         <SectionHeading title="Trending Movies" styleclass="ml-2" />
       </div>

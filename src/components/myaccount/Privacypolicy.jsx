@@ -24,7 +24,7 @@ const Privacypolicy = ({ onNavigate, isActive }) => {
     };
   }, [isActive, onNavigate]);
   return (
-    <div ref={contentRef} className="w-full h-screen flex flex-col bg-gradient-to-b from-black to-[#5B0203] text-white overflow-y-auto scrollbar-hide">
+    <div ref={contentRef} className="w-full h-screen flex flex-col bg-linear-to-b from-black to-[#5B0203] text-white overflow-y-auto scrollbar-hide">
       <div className="px-6 py-8">
         {/* === Header === */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">

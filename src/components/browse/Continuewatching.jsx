@@ -154,7 +154,7 @@ const Continuewatching = ({ isActive, onNavigate, onHasItems }) => {
           {[1, 2, 3, 4, 5, 6].map((item) => (
             <div
               key={item}
-              className="w-[200px] h-[300px] rounded-md overflow-hidden bg-[#1a1a1a] flex-shrink-0"
+              className="w-[200px] h-[300px] rounded-md overflow-hidden bg-[#1a1a1a] shrink-0"
             >
               <Lottie
                 animationData={skeletonAnimation}

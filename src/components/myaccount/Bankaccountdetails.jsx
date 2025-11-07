@@ -69,7 +69,7 @@ const BankAccountDetails = ({ onNavigate, isActive }) => {
   }, [page]);
 
   return (
-    <div ref={contentRef} className="w-full h-screen bg-gradient-to-b from-black to-[#5B0203] px-6 py-8 text-white overflow-y-auto scrollbar-hide">
+    <div ref={contentRef} className="w-full h-screen bg-linear-to-b from-black to-[#5B0203] px-6 py-8 text-white overflow-y-auto scrollbar-hide">
       {/* === Header === */}
       <div className="flex flex-col md:flex-row items-start justify-between mb-6">
         <h1 className="text-[#C02628] text-3xl font-bold mb-2 md:mb-0">
@@ -102,7 +102,7 @@ const BankAccountDetails = ({ onNavigate, isActive }) => {
           {bankAccounts.map((item, index) => (
             <div
               key={index}
-              className="relative bg-gradient-to-br from-[#B73A3A] to-[#8B2B2B] rounded-xl p-6 h-56 shadow-lg shadow-black/40 overflow-hidden"
+              className="relative bg-linear-to-br from-[#B73A3A] to-[#8B2B2B] rounded-xl p-6 h-56 shadow-lg shadow-black/40 overflow-hidden"
             >
               {/* Watermark Logo */}
               <img

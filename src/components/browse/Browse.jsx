@@ -35,7 +35,7 @@ const Browse = ({ isActive, onNavigate }) => {
       style={{ width, height, borderRadius }}
     >
       <div className="absolute inset-0 bg-[#2a2a2a]" />
-      <div className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+      <div className="absolute inset-0 animate-shimmer bg-linear-to-r from-transparent via-white/30 to-transparent" />
     </div>
   );
 
@@ -80,7 +80,7 @@ const Browse = ({ isActive, onNavigate }) => {
       <div className="relative w-full overflow-hidden bg-gray-900">
         <div className="w-full h-[650px] flex flex-col justify-end pb-10 bg-gray-900">
           {/* Overlay gradients */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-black via-black/70 to-transparent" />
 
           <div className="relative z-10 px-6 pb-10 max-w-[600px]">
             {/* Title */}
@@ -140,8 +140,8 @@ const Browse = ({ isActive, onNavigate }) => {
         }}
       >
         {/* Gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black/90 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-r from-black/95 via-black/70 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-linear-to-t from-black/90 to-transparent" />
 
         <div className="relative z-10 px-6 pb-12 max-w-[600px]">
           <h1 className="text-5xl font-bold mb-3 text-white drop-shadow-lg tracking-wide">
