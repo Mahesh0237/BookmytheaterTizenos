@@ -1,0 +1,58 @@
+@import "tailwindcss";
+/* .tv-focused {
+  outline: 3px solid #3b82f6 !important;
+  border-radius: 6px;
+} */
+
+
+/* Add to your global CSS */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+  background-color: black;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Global Styles for WebOS Search Page */
+.search-page {
+  font-family: 'WebOS System', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Hide scrollbar for all elements in WebKit browsers (Chrome, Safari, WebOS) */
+*::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+* {
+  scrollbar-width: none; /* For Firefox */
+}
+
+/* Focus styles for WebOS remote navigation */
+.movie-card:focus {
+  outline: 3px solid #5B0203;
+  outline-offset: 2px;
+}
+
+.key:focus {
+  outline: 3px solid #5B0203;
+  outline-offset: 2px;
+}
+
+.search-input:focus {
+  outline: 3px solid #5B0203;
+  outline-offset: 2px;
+}
+
+/* Smooth transitions */
+.movie-card, .key, .search-input {
+  transition: all 0.2s ease-in-out;
+}
+
